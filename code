@@ -1,0 +1,62 @@
+# Import necessary libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the dataset (after uploading the CSV file to Google Colab)
+from google.colab import files
+uploaded = files.upload()
+
+# Assuming the file name is 'IPL_BallByBall2008_2024(Updated).csv'
+file_name = 'IPL_BallByBall2008_2024(Updated).csv'
+ipl_data = pd.read_csv(file_name)
+
+# Convert 'Date' to datetime type
+ipl_data['Date'] = pd.to_datetime(ipl_data['Date'], errors='coerce')
+
+# Convert 'Ball No' to integer type
+ipl_data['Ball No'] = ipl_data['Ball No'].astype('int', errors='ignore')
+
+# Handling missing values
+ipl_data['type of extras'].fillna('none', inplace=True)
+ipl_data['wicket_type'].fillna('no wicket', inplace=True)
+ipl_data['Player Out'].fillna('no wicket', inplace=True)
+ipl_data['fielders_involved'].fillna('none', inplace=True)
+# Set plot style
+sns.set(style='whitegrid')
+
+# 1. Distribution of Runs Scored
+plt.figure(figsize=(10, 6))
+sns.histplot(ipl_data['runs_scored'], bins=15, kde=True)
+plt.title('Distribution of Runs Scored per Ball')
+plt.xlabel('Runs Scored')
+plt.ylabel('Frequency')
+plt.show()
+
+# 2. Count of Wickets by Type
+plt.figure(figsize=(12, 6))
+wicket_counts = ipl_data['wicket_type'].value_counts().drop('no wicket')
+sns.barplot(x=wicket_counts.index, y=wicket_counts.values)
+plt.title('Count of Wickets by Type')
+plt.xlabel('Wicket Type')
+plt.ylabel('Count')
+plt.xticks(rotation=45)
+plt.show()
+# 3. Top Players Involved in Dismissals
+plt.figure(figsize=(12, 6))
+top_fielders = ipl_data['fielders_involved'].value_counts().drop('none').head(10)
+sns.barplot(x=top_fielders.index, y=top_fielders.values)
+plt.title('Top 10 Players Involved in Dismissals')
+plt.xlabel('Player')
+plt.ylabel('Count')
+plt.xticks(rotation=45)
+plt.show()
+
+# 4. Correlation Heatmap
+plt.figure(figsize=(10, 8))
+numerical_features = ipl_data[['Innings No', 'Ball No', 'runs_scored', 'extras', 'score']]
+correlation_matrix = numerical_features.corr()
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', linewidths=0.5)
+plt.title('Correlation Heatmap of Numerical Features')
+plt.show()
+
