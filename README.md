@@ -23,13 +23,16 @@ Key Activities:
 The output for various explorations are as follows:
 Histogram:
 
-      ![im1](https://github.com/jenuvarsha/codtech-task-1/assets/118885424/b09b2069-ed70-4126-a187-c5524673d7b9)
+ ![im1](https://github.com/jenuvarsha/codtech-task-1/assets/118885424/b09b2069-ed70-4126-a187-c5524673d7b9)
 
   
 Barchart:
- 
+ ![im2](https://github.com/jenuvarsha/codtech-task-1/assets/118885424/360980df-ac34-4d0e-9ab6-44964849d5bb)
+
 Heatmap:
-  
+
+![im3](https://github.com/jenuvarsha/codtech-task-1/assets/118885424/fc3d0c86-c3f5-43b5-925a-98978658d672)
+
 
 
 
