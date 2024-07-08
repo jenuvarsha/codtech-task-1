@@ -4,7 +4,7 @@ Company:CODTECH SOLUTIONS
 ID:CT04DA2291
 Domain:Data analyst
 Duration:June 15 to July 15 2024
-Mentor:
+Mentor:sravani gouni
 
 OVERVIEW OF THE PROJECT 
 PROJECT:Exploratory Data Analysis
